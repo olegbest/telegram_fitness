@@ -52,7 +52,7 @@ function callback(error, response, body) {
     console.log(body);
 }
 
-// request(options, callback);
+request(options, callback);
 
 
 app.post('/bepaid', function (req, res) {
