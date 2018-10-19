@@ -52,11 +52,11 @@ function callback(error, response, body) {
     console.log(body);
 }
 
-request(options, callback);
+// request(options, callback);
 
 
 app.post('/bepaid', function (req, res) {
-    console.log(req)
+    console.log(req.hostname)
     // console.log(res)
     res.send(200);
 });
