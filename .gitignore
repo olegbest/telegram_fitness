@@ -1,0 +1,4 @@
+node_modules
+.idea
+src/bot.js
+src/bepaid/config.json
