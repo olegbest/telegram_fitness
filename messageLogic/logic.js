@@ -349,7 +349,7 @@ module.exports = {
 
 async function generateLink(price, idUser) {
     let lin = await bepaid.generateLink(idUser);
-    let link = lin.redirect_url || "https://www.ufsi24.com/"
+    let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
     return link;
 }
 

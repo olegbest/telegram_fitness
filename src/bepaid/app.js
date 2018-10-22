@@ -48,7 +48,12 @@ module.exports = {
 
             request(options, (error, response, body) => {
 
-                resolve(body);
+                try {
+                    resolve(JSON.parse(body));
+                } catch (e) {
+                    console.log(e)
+                }
+
 
             });
         })
