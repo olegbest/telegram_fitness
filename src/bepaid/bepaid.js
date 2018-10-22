@@ -18,13 +18,11 @@ let auth = {
 app.post('/bepaid', function (req, res) {
     console.log("ds");
     res.sendStatus(200);
-})
+});
 
-const httpsOptions = {
-    cert: cfg.sert,
-    key: cfg.sertkey
-};
 
-https.createServer(httpsOptions, app).listen(port, function () {
-    console.log("server on port " + port)
-})
+
+app.listen(port);
+console.log("success port "+ port)
+
+require('./app')
