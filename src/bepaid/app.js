@@ -13,7 +13,7 @@ let auth = {
 var dataString = {
     "checkout": {
         "version": 2.1,
-        "test": true,
+        // "test": true,
         "transaction_type": "payment",
         "attempts": 3,
         "settings": {
