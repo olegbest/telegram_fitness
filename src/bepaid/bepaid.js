@@ -111,7 +111,7 @@ app.post('/bepaid', function (req, res) {
     res.send(200);
 });
 
-app.get('/', function (req,res) {
+app.get('/', function (req, res) {
     res.send("Hi")
 })
 
@@ -121,7 +121,11 @@ const optionsCert = {
     cert: cfg.sert
 };
 
-https.createServer(optionsCert,app, (req, res) => {
+https.get("/", function (req, res) {
+    console.log(123);
+})
+
+https.createServer(optionsCert, (req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
 }).listen(port);
