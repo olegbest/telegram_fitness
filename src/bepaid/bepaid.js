@@ -6,34 +6,24 @@ const cfg = require('./config')
 
 const https = require('https');
 const fs = require('fs');
+const path = require('path');
 
 let auth = {
     'user': cfg.shop_id,
     'pass': cfg.secret_key
-}
-
-let headers = {
-    'Content-Type': 'application/json'
 };
 
+// app.use('/test', express.static(path.join(__dirname, '../../', 'client')));
 
 app.post('/bepaid', function (req, res) {
-    console.log(req.hostname);
-    // console.log(res)
-    res.send(200);
-});
-
-app.get('/', function (req, res) {
-    res.send("Hi")
+    console.log("ds")
 })
 
-
-const optionsCert = {
-    key: cfg.sertkey,
-    cert: cfg.sert
+const httpsOptions = {
+    cert: cfg.sert,
+    key: cfg.sertkey
 };
 
-
-https.createServer(optionsCert, app).listen(port,(req, res) => {
-
-});
+https.createServer(httpsOptions, app).listen(port, function () {
+    console.log("server on port " + port)
+})
