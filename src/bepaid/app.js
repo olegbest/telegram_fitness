@@ -25,6 +25,7 @@ var dataString = {
             "language": "ru"
         },
         "order": {
+            "tracking_id": "123",
             "currency": "BYN",
             "amount": 412,
             "description": "Order description"
