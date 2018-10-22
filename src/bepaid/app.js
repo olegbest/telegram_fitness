@@ -13,8 +13,7 @@ let auth = {
 module.exports = {
 
     async generateLink(idUser) {
-        await
-        return new Promise((resolve) => {
+        return await new Promise((resolve) => {
             let dataString = {
                 "checkout": {
                     "version": 2.1,
