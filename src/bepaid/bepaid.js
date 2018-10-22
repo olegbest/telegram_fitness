@@ -16,7 +16,8 @@ let auth = {
 // app.use('/test', express.static(path.join(__dirname, '../../', 'client')));
 
 app.post('/bepaid', function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
+    console.log(req);
     res.sendStatus(200);
 });
 
