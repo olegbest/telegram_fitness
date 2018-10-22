@@ -22,18 +22,12 @@ var dataString = {
             "fail_url": "https://ufsi24.com",
             "cancel_url": "https://ufsi24.com",
             "notification_url": "http://185.179.83.31:8081/bepaid",
-            "language": "ru",
-            "customer_fields": {
-                "read_only": ["email"]
-            }
+            "language": "ru"
         },
         "order": {
             "currency": "BYN",
             "amount": 412,
             "description": "Order description"
-        },
-        "customer": {
-            "email": "jake@example.com"
         }
     }
 };
