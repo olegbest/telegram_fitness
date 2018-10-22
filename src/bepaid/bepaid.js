@@ -19,7 +19,6 @@ let auth = {
 
 app.post('/bepaid', function (req, res) {
     console.log(req.body);
-    console.log(req);
     res.sendStatus(200);
 });
 
