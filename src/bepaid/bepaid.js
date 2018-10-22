@@ -11,12 +11,6 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser());
 
-let auth = {
-    'user': cfg.shop_id,
-    'pass': cfg.secret_key
-};
-
-
 app.post('/bepaid', function (req, res) {
     console.log(req.body);
     res.sendStatus(200);

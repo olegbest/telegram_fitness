@@ -6,6 +6,7 @@ const databaseUtil = require('./../lib/databaseUtil');
 const logic = require('../messageLogic/logic');
 const states = require('../data/states');
 const methods = require('./methods');
+require('./bepaid/bepaid');
 
 bot.on('message', async (msg) => {
     on_message.answerMessage(msg, databaseUtil, logic, blinger, states, methods);

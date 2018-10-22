@@ -2,7 +2,8 @@ const messageUtils = require('../lib/messageUtils');
 const bot = require('../src/bot').bot;
 const states = require('../data/states');
 const databaseUtil = require('../lib/databaseUtil');
-const methods = require('../src/methods')
+const methods = require('../src/methods');
+const bepaid = require('../src/bepaid/app');
 
 module.exports = {
     async sendMessage(state, msg, nextState, user, data) {
@@ -347,6 +348,7 @@ module.exports = {
 
 
 function generateLink(price) {
+    bepaid.generateLink()
     return "http://ufsi24.com/";
 }
 
