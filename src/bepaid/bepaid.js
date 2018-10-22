@@ -16,7 +16,8 @@ let auth = {
 // app.use('/test', express.static(path.join(__dirname, '../../', 'client')));
 
 app.post('/bepaid', function (req, res) {
-    console.log("ds")
+    console.log("ds");
+    res.sendStatus(200);
 })
 
 const httpsOptions = {
