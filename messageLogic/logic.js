@@ -123,7 +123,7 @@ module.exports = {
             if (state === "buy-promo-success" || state === "buy") {
                 if (user.purchasedCourses.length === 0 || data.course) {
                     let el = states[state].textArray[0];
-                    let text = el.value + "\n" + generateLink(150);
+                    let text = el.value + "\n" + generateLink(150, user.info.id);
 
                     await messageUtils.sendButton(bot, msg.chat.id, text, {
                         "reply_markup": {
@@ -347,9 +347,10 @@ module.exports = {
 }
 
 
-function generateLink(price) {
-    bepaid.generateLink()
-    return "http://ufsi24.com/";
+async function generateLink(price, idUser) {
+    let lin = await bepaid.generateLink(idUser);
+    let link = lin.redirect_url || "https://www.ufsi24.com/"
+    return link;
 }
 
 function wait(ms) {
