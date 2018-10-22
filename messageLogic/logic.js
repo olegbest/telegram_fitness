@@ -123,7 +123,7 @@ module.exports = {
             if (state === "buy-promo-success" || state === "buy") {
                 if (user.purchasedCourses.length === 0 || data.course) {
                     let el = states[state].textArray[0];
-                    let text = el.value + "\n" + generateLink(150, user.info.id);
+                    let text = el.value + "\n" + await generateLink(150, user.info.id);
 
                     await messageUtils.sendButton(bot, msg.chat.id, text, {
                         "reply_markup": {
