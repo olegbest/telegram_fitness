@@ -313,12 +313,12 @@ module.exports = {
         console.log(w);
         return !isNaN(+text) && text > w[0] && text < w[1];
     },
-    async successBuy(msg, user) {
+    async successBuy(msg, user, status) {
         let pay = true;
         if (pay) {
             await messageUtils.sendText(bot, msg.chat.id, "Идет проверка оплаты...");
             await wait(2000);
-            if (user.selectPack === "3" || user.selectPack === "6") {
+            if (status === "success") {
                 let selPack = states["list"].textArray[user.selectPack];
                 await databaseUtil.saveUserData(user.info.id, {isBuy: true, activePack: user.selectPack});
                 let course = {
