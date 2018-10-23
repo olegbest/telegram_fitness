@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser());
 
 app.post('/bepaid', function (req, res) {
-    console.log(req.body);
+    console.log(req);
     console.log(req.hostname);
     let data = req.body;
     if(data){
