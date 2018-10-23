@@ -15,8 +15,9 @@ module.exports = {
     async generateLink(idUser, pack) {
         return await new Promise(async (resolve) => {
             let currency = await getCurrency();
-            let price = pack.price * 100;
+            let price = pack.price;
             price = ((+currency.USD_in + (+currency.USD_out)) / 2) * price;
+            price = Math.floor(price * 100);
             let dataString = {
                 "checkout": {
                     "version": 2.1,
