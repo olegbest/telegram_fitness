@@ -9,15 +9,14 @@ const bodyParser = require('body-parser');
 app.use(bodyParser());
 
 app.post('/bepaid', async function (req, res) {
-    console.log(req);
-    console.log(req.hostname);
+    res.sendStatus(200);
     let data = req.body;
     if (data) {
         if (data.transaction) {
             let t = data.transaction;
             let user = await databaseUtil.findUser(+t.tracking_id);
             let msg = {};
-            msg.chat= {};
+            msg.chat = {};
             msg.chat.id = user.chat_id;
             if (t.status === "successful") {
 
@@ -25,9 +24,8 @@ app.post('/bepaid', async function (req, res) {
             }
         }
     }
-    res.sendStatus(200);
-});
 
+});
 
 app.listen(port);
 console.log("success port " + port)
