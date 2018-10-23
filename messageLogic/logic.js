@@ -121,7 +121,7 @@ module.exports = {
         } else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
             if (state === "buy-promo-success" || state === "buy") {
-                user = databaseUtil.findUser(user.info.id);
+                user = await databaseUtil.findUser(user.info.id);
                 if (user.purchasedCourses.length === 0 || data.course) {
                     let el = states[state].textArray[0];
                     let pack = states["list"].textArray[user.selectPack];
