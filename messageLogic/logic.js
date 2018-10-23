@@ -351,6 +351,7 @@ module.exports = {
 
 async function generateLink(price, idUser, pack) {
     let lin = await bepaid.generateLink(idUser, pack);
+    console.log(lin);
     let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
     return link;
 }
