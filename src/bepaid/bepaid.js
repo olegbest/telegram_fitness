@@ -15,7 +15,7 @@ app.post('/bepaid', async function (req, res) {
     if (data) {
         if (data.transaction) {
             let t = data.transaction;
-            let user = databaseUtil.findUser(+t.tracking_id);
+            let user = await databaseUtil.findUser(+t.tracking_id);
             let msg = {};
             msg.chat= {};
             msg.chat.id = user.chat_id;
