@@ -142,39 +142,6 @@ module.exports = {
                         is_bot: true,
                         date: new Date()
                     });
-                    await wait(3000);
-                    let pay = true;
-                    if (pay) {
-                        await messageUtils.sendText(bot, msg.chat.id, "Идет проверка оплаты...");
-                        await wait(2000);
-                        if (user.selectPack === "3" || user.selectPack === "6") {
-                            let selPack = states["list"].textArray[user.selectPack];
-                            await databaseUtil.saveUserData(user.info.id, {isBuy: true, activePack: user.selectPack});
-                            let course = {
-                                id: user.purchasedCourses.length,
-                                pack: user.selectPack,
-                                dateBuy: new Date(),
-                                duration: selPack.description.duration / 7,
-                                "now-week": 0,
-                                isPause: false
-                            };
-                            let pCourse = user.purchasedCourses;
-                            pCourse.push(course);
-                            await databaseUtil.saveUserData(user.info.id, {purchasedCourses: pCourse});
-                            await this.sendMessage("success-pay", msg, "profile-name", user);
-                            if (user.name) {
-                                await this.sendMessage("weight-profile", msg, "check-weight", user, data);
-                            } else {
-                                await this.sendMessage("name-profile", msg, "gender-profile", user);
-                            }
-                            return
-                        } else {
-                            await this.sendMessage("failed-pay", msg, "", user);
-                            await wait(3000);
-                            await this.sendPackageInfo(msg, user.selectPack, user, {});
-                        }
-
-                    }
                 } else {
                     await this.sendMessage("interrupt-pack", msg, "typing", user, data);
                 }
@@ -345,6 +312,40 @@ module.exports = {
         let w = states["list"].textArray[+pack].description.weight;
         console.log(w);
         return !isNaN(+text) && text > w[0] && text < w[1];
+    },
+    async successBuy(msg, user) {
+        let pay = true;
+        if (pay) {
+            await messageUtils.sendText(bot, msg.chat.id, "Идет проверка оплаты...");
+            await wait(2000);
+            if (user.selectPack === "3" || user.selectPack === "6") {
+                let selPack = states["list"].textArray[user.selectPack];
+                await databaseUtil.saveUserData(user.info.id, {isBuy: true, activePack: user.selectPack});
+                let course = {
+                    id: user.purchasedCourses.length,
+                    pack: user.selectPack,
+                    dateBuy: new Date(),
+                    duration: selPack.description.duration / 7,
+                    "now-week": 0,
+                    isPause: false
+                };
+                let pCourse = user.purchasedCourses;
+                pCourse.push(course);
+                await databaseUtil.saveUserData(user.info.id, {purchasedCourses: pCourse});
+                await this.sendMessage("success-pay", msg, "profile-name", user);
+                if (user.name) {
+                    await this.sendMessage("weight-profile", msg, "check-weight", user, data);
+                } else {
+                    await this.sendMessage("name-profile", msg, "gender-profile", user);
+                }
+                return
+            } else {
+                await this.sendMessage("failed-pay", msg, "", user);
+                await wait(3000);
+                await this.sendPackageInfo(msg, user.selectPack, user, {});
+            }
+
+        }
     }
 }
 
