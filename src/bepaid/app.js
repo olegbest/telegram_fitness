@@ -12,8 +12,11 @@ let auth = {
 
 module.exports = {
 
-    async generateLink(idUser) {
-        return await new Promise((resolve) => {
+    async generateLink(idUser, pack) {
+        return await new Promise(async (resolve) => {
+            let currency = await getCurrency();
+            let price = pack.price * 100;
+            price = ((+currency.USD_in + (+USD_out)) / 2) * price;
             let dataString = {
                 "checkout": {
                     "version": 2.1,
@@ -31,8 +34,8 @@ module.exports = {
                     "order": {
                         "tracking_id": `${idUser}`,
                         "currency": "BYN",
-                        "amount": 412,
-                        "description": "Order description"
+                        "amount": price,
+                        "description": pack.name || "Fitness"
                     }
                 }
             };
@@ -59,3 +62,25 @@ module.exports = {
         })
     }
 };
+
+async function getCurrency() {
+    return await new Promise(resolve => {
+        let options = {
+            url: "https://belarusbank.by/api/kursExchange",
+            method: 'GET'
+        };
+        request(options, (error, response, body) => {
+
+            try {
+                resolve(JSON.parse(body)[0]);
+            } catch (e) {
+                console.log(e)
+            }
+
+
+        });
+
+    })
+}
+
+getCurrency()
