@@ -54,7 +54,7 @@ setInterval(async function () {
                     let pack = purC[indexPack];
                     if (pack["now-week"] < pack.duration) {
 
-                        if (pack.sendNextDate < new Date()) {
+                        if (pack.sendNextDate < new Date() && user.state !== "check-weight-buyer") {
                             await logic.sendMessage("weight-profile-after-buy", msg, "check-weight-buyer", user, {});
                         }
                     } else if (pack["now-week"] === pack.duration) {

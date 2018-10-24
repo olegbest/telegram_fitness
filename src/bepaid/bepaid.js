@@ -21,6 +21,8 @@ app.post('/bepaid', async function (req, res) {
             if (t.status === "successful") {
 
                 await logic.successBuy(msg, user, "success")
+            } else {
+                await logic.successBuy(msg, user, "failed")
             }
         }
     }
