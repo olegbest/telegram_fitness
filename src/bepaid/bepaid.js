@@ -1,5 +1,5 @@
 const express = require('express');
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 80;
 const app = express();
 const logic = require('./../../messageLogic/logic');
 const databaseUtil = require('./../../lib/databaseUtil')
