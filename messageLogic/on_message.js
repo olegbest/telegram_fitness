@@ -58,7 +58,7 @@ module.exports = {
                                 await logic.sendPackageInfo(msg, user.selectPack, user, {})
                             } else {
                                 let promo = await methods.findAndUpdatePromocode(msg.text);
-                                if (!isNaN(+promo)) {
+                                if (!isNaN(+promo) && promo) {
                                     await logic.sendMessage("buy-promo-success", msg, "typing", user, {})
                                 } else if (!promo) {
                                     await logic.sendMessage("buy-promo-failed", msg, "buy-promo", user, {})
