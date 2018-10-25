@@ -125,7 +125,11 @@ module.exports = {
                 if (user.purchasedCourses.length === 0 || data.course) {
                     let el = states[state].textArray[0];
                     let pack = states["list"].textArray[user.selectPack];
-                    let text = el.value + "\n" + await generateLink(150, user.info.id, pack);
+                    let discount = 0;
+                    if (data.discount) {
+                        discount = data.discount;
+                    }
+                    let text = el.value + "\n" + await generateLink(150, user.info.id, pack, discount);
 
                     await messageUtils.sendButton(bot, msg.chat.id, text, {
                         "reply_markup": {
@@ -355,11 +359,19 @@ module.exports = {
 }
 
 
-async function generateLink(price, idUser, pack) {
-    let lin = await bepaid.generateLink(idUser, pack);
-    console.log(lin);
-    let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
-    return link;
+async function generateLink(price, idUser, pack, discount) {
+    if (discount === 100) {
+        let user = await databaseUtil.findUser(+idUser);
+        let msg = {};
+        msg.chat = {};
+        msg.chat.id = user.chat_id;
+        this.successBuy(msg, user, "success", "");
+    } else {
+        let lin = await bepaid.generateLink(idUser, pack, discount);
+        console.log(lin);
+        let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
+        return link;
+    }
 }
 
 function wait(ms) {

@@ -59,7 +59,7 @@ module.exports = {
                             } else {
                                 let promo = await methods.findAndUpdatePromocode(msg.text);
                                 if (!isNaN(+promo) && promo) {
-                                    await logic.sendMessage("buy-promo-success", msg, "typing", user, {})
+                                    await logic.sendMessage("buy-promo-success", msg, "typing", user, {discount: promo})
                                 } else if (!promo) {
                                     await logic.sendMessage("buy-promo-failed", msg, "buy-promo", user, {})
                                 }

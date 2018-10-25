@@ -55,7 +55,9 @@ module.exports = {
                         return promo.discount;
                     }
                 } else if (t === "1") {
-
+                    if (new Date() < new Date(promo.dateEnd)) {
+                        return promo.discount;
+                    }
                 }
             }
         } else {
