@@ -54,13 +54,15 @@ module.exports = {
                             await logic.sendPackageInfo(msg, user.selectPack, user, {});
                             await databaseUtil.saveUserData(msg.from.id, {oldState: "state0"})
                         } else if ((user.oldState === "buy-promo" || user.oldState === "buy-promo-failed") && user.state !== "state0") {
-                            let promo = await methods.findPromocode(msg.text);
-                            if (msg.text === "olegbest") {
-                                await logic.sendMessage("buy-promo-success", msg, "typing", user, {})
-                            } else if (tx === "назад") {
+                            if (tx === "назад") {
                                 await logic.sendPackageInfo(msg, user.selectPack, user, {})
                             } else {
-                                await logic.sendMessage("buy-promo-failed", msg, "buy-promo", user, {})
+                                let promo = await methods.findAndUpdatePromocode(msg.text);
+                                if (!isNaN(+promo)) {
+                                    await logic.sendMessage("buy-promo-success", msg, "typing", user, {})
+                                } else if (!promo) {
+                                    await logic.sendMessage("buy-promo-failed", msg, "buy-promo", user, {})
+                                }
                             }
                         } else {
                             let nextState;

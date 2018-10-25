@@ -44,9 +44,22 @@ module.exports = {
         purC[indexPack].lastSendDate = new Date();
         await databaseUtil.saveUserData(user.info.id, {purchasedCourses: purC})
     },
-    async findPromocode(text){
+    async findAndUpdatePromocode(text) {
         let promo = await databaseUtil.findPromo(text);
-        console.log(promo);
+        if (promo) {
+            if (promo.type) {
+                let t = promo.type;
+                if (t === "1") {
+                    if(promo.number_of_use > 0){
+                        await databaseUtil.updatePromo(text, {number_of_use: promo.number_of_use-1});
+                        return promo.discount;
+                    }
+                } else if (t === "2") {
+
+                }
+            }
+        }
+        return false;
     }
 };
 
