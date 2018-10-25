@@ -47,6 +47,7 @@ module.exports = {
     async findAndUpdatePromocode(text) {
         let promo = await databaseUtil.findPromo(text);
         if (promo) {
+            console.log(promo);
             if (promo.type) {
                 let t = promo.type;
                 if (t === "1") {
