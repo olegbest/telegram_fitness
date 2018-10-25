@@ -12,6 +12,7 @@ app.post('/bepaid', async function (req, res) {
     res.sendStatus(200);
     let data = req.body;
     if (data) {
+        console.log(data);
         if (data.transaction) {
             let t = data.transaction;
             let user = await databaseUtil.findUser(+t.tracking_id);

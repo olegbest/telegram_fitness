@@ -334,7 +334,7 @@ module.exports = {
                 await databaseUtil.saveUserData(user.info.id, {purchasedCourses: pCourse});
                 await this.sendMessage("success-pay", msg, "profile-name", user);
                 if (user.name) {
-                    await this.sendMessage("weight-profile", msg, "check-weight", user, data);
+                    await this.sendMessage("weight-profile", msg, "check-weight", user);
                 } else {
                     await this.sendMessage("name-profile", msg, "gender-profile", user);
                 }
