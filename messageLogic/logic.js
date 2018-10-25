@@ -154,6 +154,11 @@ module.exports = {
                         let tx = el.value;
                         await bot.sendChatAction(msg.chat.id, "typing");
                         await wait(+el.time);
+
+                        if (state === "failed-pay") {
+                            el.value.replace("{{reason}}", (data.fail_message || ""));
+                        }
+
                         if (el.type === 'text') {
                             // await messageUtils.sendText(bot, msg.chat.id, tx);
                             await messageUtils.sendButton(bot, msg.chat.id, tx, {
@@ -313,7 +318,7 @@ module.exports = {
         console.log(w);
         return !isNaN(+text) && text > w[0] && text < w[1];
     },
-    async successBuy(msg, user, status) {
+    async successBuy(msg, user, status, text) {
         let pay = true;
         if (pay) {
             // await messageUtils.sendText(bot, msg.chat.id, "Идет проверка оплаты...");
@@ -334,13 +339,13 @@ module.exports = {
                 await databaseUtil.saveUserData(user.info.id, {purchasedCourses: pCourse});
                 await this.sendMessage("success-pay", msg, "profile-name", user);
                 if (user.name) {
-                    await this.sendMessage("weight-profile", msg, "check-weight", user);
+                    await this.sendMessage("weight-profile", msg, "check-weight", user, {});
                 } else {
-                    await this.sendMessage("name-profile", msg, "gender-profile", user);
+                    await this.sendMessage("name-profile", msg, "gender-profile", user, {});
                 }
                 return
             } else {
-                await this.sendMessage("failed-pay", msg, "", user);
+                await this.sendMessage("failed-pay", msg, "", user, {fail_message: text});
                 await wait(3000);
                 await this.sendPackageInfo(msg, user.selectPack, user, {});
             }

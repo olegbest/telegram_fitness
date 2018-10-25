@@ -21,9 +21,9 @@ app.post('/bepaid', async function (req, res) {
             msg.chat.id = user.chat_id;
             if (t.status === "successful") {
 
-                await logic.successBuy(msg, user, "success")
+                await logic.successBuy(msg, user, "success", "")
             } else {
-                await logic.successBuy(msg, user, "failed")
+                await logic.successBuy(msg, user, "failed", t.message)
             }
         }
     }
