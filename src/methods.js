@@ -46,13 +46,13 @@ module.exports = {
     },
     async findAndUpdatePromocode(text) {
         let promo = await databaseUtil.findPromo(text);
+        console.log(promo);
         if (promo) {
-            console.log(promo);
             if (promo.type) {
                 let t = promo.type;
                 if (t === "1") {
-                    if(promo.number_of_use > 0){
-                        await databaseUtil.updatePromo(text, {number_of_use: promo.number_of_use-1});
+                    if (promo.number_of_use > 0) {
+                        await databaseUtil.updatePromo(text, {number_of_use: promo.number_of_use - 1});
                         return promo.discount;
                     }
                 } else if (t === "2") {
