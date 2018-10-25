@@ -156,7 +156,7 @@ module.exports = {
                         await wait(+el.time);
 
                         if (state === "failed-pay") {
-                            el.value.replace("{{reason}}", (data.fail_message || ""));
+                            tx.replace("{{reason}}", (data.fail_message || ""));
                         }
 
                         if (el.type === 'text') {
