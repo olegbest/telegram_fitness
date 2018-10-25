@@ -46,6 +46,7 @@ module.exports = {
     },
     async findPromocode(text){
         let promo = await databaseUtil.findPromo(text);
+        console.log(promo);
     }
 };
 
