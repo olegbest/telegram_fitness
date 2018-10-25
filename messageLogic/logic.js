@@ -357,12 +357,13 @@ module.exports = {
         }
     },
     async generateLink(price, idUser, pack, discount) {
-        if (discount === 100) {
+        if (discount >= 100) {
             let user = await databaseUtil.findUser(+idUser);
             let msg = {};
             msg.chat = {};
             msg.chat.id = user.chat_id;
             this.successBuy(msg, user, "success", "");
+            return "";
         } else {
             let lin = await bepaid.generateLink(idUser, pack, discount);
             console.log(lin);
