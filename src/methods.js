@@ -43,8 +43,11 @@ module.exports = {
         purC[indexPack].sendNextDate = date;
         purC[indexPack].lastSendDate = new Date();
         await databaseUtil.saveUserData(user.info.id, {purchasedCourses: purC})
+    },
+    async findPromocode(text){
+        let promo = await databaseUtil.findPromo(text);
     }
-}
+};
 
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

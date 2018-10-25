@@ -54,6 +54,8 @@ module.exports = {
                             await logic.sendPackageInfo(msg, user.selectPack, user, {});
                             await databaseUtil.saveUserData(msg.from.id, {oldState: "state0"})
                         } else if ((user.oldState === "buy-promo" || user.oldState === "buy-promo-failed") && user.state !== "state0") {
+                            let promo = await methods.findPromocode(msg.text);
+                            console.log(promo)
                             if (msg.text === "olegbest") {
                                 await logic.sendMessage("buy-promo-success", msg, "typing", user, {})
                             } else if (tx === "назад") {
