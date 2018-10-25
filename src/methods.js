@@ -48,6 +48,7 @@ module.exports = {
         let promo = await databaseUtil.findPromo(text);
         console.log(promo);
         if (promo) {
+            console.log(promo);
             if (promo.type) {
                 let t = promo.type;
                 if (t === "1") {
@@ -59,8 +60,9 @@ module.exports = {
 
                 }
             }
+        } else {
+            return false;
         }
-        return false;
     }
 };
 
