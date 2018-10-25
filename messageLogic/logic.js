@@ -129,7 +129,7 @@ module.exports = {
                     if (data.discount) {
                         discount = data.discount;
                     }
-                    let text = el.value + "\n" + await generateLink(150, user.info.id, pack, discount);
+                    let text = el.value + "\n" + await this.generateLink(150, user.info.id, pack, discount);
 
                     await messageUtils.sendButton(bot, msg.chat.id, text, {
                         "reply_markup": {
@@ -355,24 +355,25 @@ module.exports = {
             }
 
         }
+    },
+    async generateLink(price, idUser, pack, discount) {
+        if (discount === 100) {
+            let user = await databaseUtil.findUser(+idUser);
+            let msg = {};
+            msg.chat = {};
+            msg.chat.id = user.chat_id;
+            this.successBuy(msg, user, "success", "");
+        } else {
+            let lin = await bepaid.generateLink(idUser, pack, discount);
+            console.log(lin);
+            let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
+            return link;
+        }
     }
 }
 
 
-async function generateLink(price, idUser, pack, discount) {
-    if (discount === 100) {
-        let user = await databaseUtil.findUser(+idUser);
-        let msg = {};
-        msg.chat = {};
-        msg.chat.id = user.chat_id;
-        this.successBuy(msg, user, "success", "");
-    } else {
-        let lin = await bepaid.generateLink(idUser, pack, discount);
-        console.log(lin);
-        let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
-        return link;
-    }
-}
+
 
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
