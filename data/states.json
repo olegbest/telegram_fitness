@@ -629,6 +629,9 @@
       }
     ]
   },
+  "check-country-live": {
+    "textArray": []
+  },
   "buy-promo-success": {
     "textArray": [
       {
