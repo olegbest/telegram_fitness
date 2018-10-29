@@ -66,9 +66,12 @@ module.exports = {
     },
 
     async updateStageStates(user){
+        console.log(user)
         if (user.state) {
+            console.log(user.state)
             if (states[user.state]) {
                 let id = states[user.state].id;
+                console.log(id)
                 if (id || id === 0) {
                     let stageState = await databaseUtil.find_stageStates(id)
                     if (stageState) {
