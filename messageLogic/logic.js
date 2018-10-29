@@ -118,40 +118,40 @@ module.exports = {
             await this.sendMessage("waitPack", msg, "check-wait-pack", user, {})
 
 
+        } else if (state === "check-country-live") {
+            user = await databaseUtil.findUser(user.info.id);
+            if (user.purchasedCourses.length === 0 || data.course) {
+                let el = states[state].textArray[0];
+                let pack = states["list"].textArray[user.selectPack];
+                let discount = 0;
+                if (data.discount) {
+                    discount = data.discount;
+                }
+                let text = el.value + "\n" + await this.generateLink(150, user.info.id, pack, discount);
+
+                await messageUtils.sendButton(bot, msg.chat.id, text, {
+                    "reply_markup": {
+                        "keyboard": el.buttons,
+                        "resize_keyboard": true,
+                        "one_time_keyboard": true,
+
+                    }
+                });
+
+                await databaseUtil.saveMessage({
+                    userId: user.info.id,
+                    message: text,
+                    is_bot: true,
+                    date: new Date()
+                });
+            } else {
+                await this.sendMessage("interrupt-pack", msg, "typing", user, data);
+            }
         } else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
             if (state === "buy-promo-success" || state === "buy") {
                 await this.sendMessage("country-live", msg, "check-country-live", user, data);
                 return;
-            } else if (state === "check-country-live") {
-                user = await databaseUtil.findUser(user.info.id);
-                if (user.purchasedCourses.length === 0 || data.course) {
-                    let el = states[state].textArray[0];
-                    let pack = states["list"].textArray[user.selectPack];
-                    let discount = 0;
-                    if (data.discount) {
-                        discount = data.discount;
-                    }
-                    let text = el.value + "\n" + await this.generateLink(150, user.info.id, pack, discount);
-
-                    await messageUtils.sendButton(bot, msg.chat.id, text, {
-                        "reply_markup": {
-                            "keyboard": el.buttons,
-                            "resize_keyboard": true,
-                            "one_time_keyboard": true,
-
-                        }
-                    });
-
-                    await databaseUtil.saveMessage({
-                        userId: user.info.id,
-                        message: text,
-                        is_bot: true,
-                        date: new Date()
-                    });
-                } else {
-                    await this.sendMessage("interrupt-pack", msg, "typing", user, data);
-                }
             } else {
 
                 let arr = states[state].textArray;
