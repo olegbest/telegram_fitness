@@ -118,11 +118,11 @@ module.exports = {
             await this.sendMessage("waitPack", msg, "check-wait-pack", user, {})
 
 
-        } else if(state === "check-country-live"){
-            console.log(state);
-            console.log(state);
-            console.log(state);
-        }else if (states[state] && state !== "typing") {
+        } else if (state === "check-country-live") {
+            await this.sendMessage("buy", msg, "typing", user, data)
+        } else if (state === "check-country-live-pr") {
+            await this.sendMessage("buy-promo", msg, "typing", user, data)
+        } else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
             if (state === "buy-promo-success" || state === "buy") {
                 user = await databaseUtil.findUser(user.info.id);
@@ -290,7 +290,7 @@ module.exports = {
                         },
                         {
                             "text": "Купить по промокоду",
-                            "callback_data": JSON.stringify({state: "country-live", data: "check-country-live"}),
+                            "callback_data": JSON.stringify({state: "country-live", data: "check-country-live-pr"}),
                         }
                     ]
                 ]
@@ -377,8 +377,6 @@ module.exports = {
         }
     }
 }
-
-
 
 
 function wait(ms) {
