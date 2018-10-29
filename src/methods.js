@@ -75,12 +75,12 @@ module.exports = {
                     let stageState = await databaseUtil.find_stageStates(id);
                     console.log(stageState);
                     if (stageState) {
-                        let arr = stageState.users;
-                        let userId = user.info.id;
-                        if (arr.indexOf(userId) === -1) {
-                            arr.push(userId);
-                            await databaseUtil.update_stageStates(id, {users: arr});
-                        }
+                        // let arr = stageState.users;
+                        // let userId = user.info.id;
+                        // if (arr.indexOf(userId) === -1) {
+                        //     arr.push(userId);
+                        //     await databaseUtil.update_stageStates(id, {users: arr});
+                        // }
                     }
                 }
             }
