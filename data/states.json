@@ -21,6 +21,7 @@
     "inline_query": true,
     "textArray": [
       {
+        "id": 0,
         "name": "Базовый. Похудение",
         "image": "pack-1.jpg",
         "description": {
@@ -45,6 +46,7 @@
         "price": 25
       },
       {
+        "id": 1,
         "name": "Базовый на 3 месяца. Похудение",
         "image": "pack-2.jpg",
         "description": {
@@ -70,6 +72,7 @@
         "price": 52.5
       },
       {
+        "id": 2,
         "name": "Vip похудение",
         "image": "pack-3.jpg",
         "description": {
@@ -95,6 +98,7 @@
         "price": 52.5
       },
       {
+        "id": 3,
         "name": "Vip на 3 месяца. Похудение",
         "image": "pack-4.jpg",
         "description": {
@@ -121,6 +125,7 @@
         "price": 94.5
       },
       {
+        "id": 4,
         "name": "Веган. Похудение",
         "image": "pack-5.jpg",
         "description": {
@@ -145,6 +150,7 @@
         "price": 36
       },
       {
+        "id": 5,
         "name": "Веган на 3 месяца. Похудение",
         "image": "pack-6.jpg",
         "description": {
@@ -170,6 +176,7 @@
         "price": 70.2
       },
       {
+        "id": 6,
         "name": "Кормящая мама. Похудение",
         "image": "pack-7.jpg",
         "description": {
@@ -192,6 +199,7 @@
         "price": 36
       },
       {
+        "id": 7,
         "name": "Кормящая мама на 3 месяца. Похудение",
         "image": "pack-8.jpg",
         "description": {
@@ -215,6 +223,7 @@
         "price": 70.2
       },
       {
+        "id": 8,
         "name": "Базовый. Набор веса",
         "image": "pack-9.jpg",
         "description": {
@@ -239,6 +248,7 @@
         "price": 25
       },
       {
+        "id": 9,
         "name": "Базовый на 3 месяца. Набор веса",
         "image": "pack-10.jpg",
         "description": {
@@ -264,6 +274,7 @@
         "price": 52.5
       },
       {
+        "id": 10,
         "name": "VIP. Набор веса",
         "image": "pack-111.jpg",
         "description": {
@@ -288,6 +299,7 @@
         "price": 52.5
       },
       {
+        "id": 11,
         "name": "VIP на 3 месяца. Набор веса",
         "image": "pack-12.jpg",
         "description": {
@@ -314,6 +326,7 @@
         "price": 110.25
       },
       {
+        "id": 12,
         "name": "Базовый mini. Поддержание веса",
         "image": "pack-13.jpg",
         "description": {
@@ -335,6 +348,7 @@
         "price": 22
       },
       {
+        "id": 13,
         "name": "Базовый maxi. Поддержание веса",
         "image": "pack-14.jpg",
         "description": {
@@ -356,6 +370,7 @@
         "price": 29.6
       },
       {
+        "id": 14,
         "name": "VIP. Поддержание веса",
         "image": "pack-15.jpg",
         "description": {
@@ -378,6 +393,7 @@
         "price": 52.5
       },
       {
+        "id": 15,
         "name": "Индивидуальный",
         "image": "pack-16.jpg",
         "description": {
@@ -401,6 +417,7 @@
         "price": 199
       },
       {
+        "id": 16,
         "name": "Индивидуальный на 3 месяца",
         "image": "pack-17.jpg",
         "description": {
@@ -425,6 +442,7 @@
         "price": 447.7
       },
       {
+        "id": 17,
         "name": "Питание для людей, тренирующихся в тренажёрном зале. Похудение",
         "image": "pack-18.jpg",
         "description": {
@@ -448,6 +466,7 @@
         "price": 20
       },
       {
+        "id": 18,
         "name": "VIP. Питание для людей, тренирующихся в тренажёрном зале. Похудение",
         "image": "pack-19.jpg",
         "description": {
@@ -472,6 +491,7 @@
         "price": 42
       },
       {
+        "id": 19,
         "name": "Ленивый – ешьте и худейте",
         "image": "pack-20.jpg",
         "description": {
@@ -495,6 +515,7 @@
         "price": 23
       },
       {
+        "id": 20,
         "name": "VIP. Ленивый – ешьте и худейте",
         "image": "pack-21.jpg",
         "description": {
