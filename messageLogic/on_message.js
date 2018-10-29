@@ -50,7 +50,7 @@ module.exports = {
                         user = await databaseUtil.findUser(user.info.id);
                         await logic.sendMessage(user.state, msg, "typing", user, {})
                     } else {
-                        if ((user.oldState === "buy" || user.oldState === "buy-promo-success") && tx === "назад") {
+                        if ((user.oldState === "buy" || user.oldState === "buy-promo-success" || user.oldState === "check-country-live") && tx === "назад") {
                             await logic.sendPackageInfo(msg, user.selectPack, user, {});
                             await databaseUtil.saveUserData(msg.from.id, {oldState: "state0"})
                         } else if ((user.oldState === "buy-promo" || user.oldState === "buy-promo-failed") && user.state !== "state0") {
