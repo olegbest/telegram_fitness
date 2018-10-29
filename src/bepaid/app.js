@@ -19,16 +19,19 @@ module.exports = {
             let country;
 
             let price = pack.price;
-            price = ((+currency.USD_in + (+currency.USD_out)) / 2) * price;
-            price = Math.floor(price * 100);
-            price = Math.floor((price * (100 - discount)) / 100);
+
             if(user.country === "беларусь"){
-                country = "BYN"
+                country = "BYN";
+                price = ((+currency.USD_in + (+currency.USD_out)) / 2) * price;
             } else if (user.country === "россия"){
                 country = "RUB"
+                price = +currency.USD_RUB_in * price;
             } else {
                 country = "USD"
             }
+
+            price = Math.floor(price * 100);
+            price = Math.floor((price * (100 - discount)) / 100);
             let dataString = {
                 "checkout": {
                     "version": 2.1,
