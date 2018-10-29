@@ -330,6 +330,7 @@ module.exports = {
             if (status === "success") {
                 let selPack = states["list"].textArray[user.selectPack];
                 await databaseUtil.saveUserData(user.info.id, {isBuy: true, activePack: user.selectPack});
+                await databaseUtil.updatePackage(selPack.id, {name: selPack.name});
                 let course = {
                     id: user.purchasedCourses.length,
                     pack: user.selectPack,
