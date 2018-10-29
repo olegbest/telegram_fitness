@@ -77,6 +77,8 @@ module.exports = {
                     if (stageState) {
                         let arr = stageState.users;
                         let userId = user.info.id;
+                        console.log(arr);
+                        console.log(arr.length);
                         if (arr.indexOf(userId) === -1) {
                             arr.push(userId);
                             await databaseUtil.update_stageStates(id, {users: arr});
