@@ -12,13 +12,23 @@ let auth = {
 
 module.exports = {
 
-    async generateLink(idUser, pack, discount) {
+    async generateLink(user, pack, discount) {
         return await new Promise(async (resolve) => {
+            let idUser = user.info.id;
             let currency = await getCurrency();
+            let country;
+
             let price = pack.price;
             price = ((+currency.USD_in + (+currency.USD_out)) / 2) * price;
             price = Math.floor(price * 100);
             price = Math.floor((price * (100 - discount)) / 100);
+            if(user.country === "беларусь"){
+                country = "BYN"
+            } else if (user.country === "россия"){
+                country = "RUB"
+            } else {
+                country = "USD"
+            }
             let dataString = {
                 "checkout": {
                     "version": 2.1,
@@ -35,7 +45,7 @@ module.exports = {
                     },
                     "order": {
                         "tracking_id": `${idUser}`,
-                        "currency": "BYN",
+                        "currency": country,
                         "amount": price,
                         "description": pack.name || "Fitness"
                     }

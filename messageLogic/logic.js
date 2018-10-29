@@ -119,8 +119,10 @@ module.exports = {
 
 
         } else if (state === "check-country-live") {
+            await databaseUtil.saveUserData(user.info.id, {country: tx});
             await this.sendMessage("buy", msg, "typing", user, data)
         } else if (state === "check-country-live-pr") {
+            await databaseUtil.saveUserData(user.info.id, {country: tx});
             await this.sendMessage("buy-promo", msg, "typing", user, data)
         } else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
@@ -370,7 +372,8 @@ module.exports = {
             this.successBuy(msg, user, "success", "");
             return "";
         } else {
-            let lin = await bepaid.generateLink(idUser, pack, discount);
+            let user = await databaseUtil.findUser(+idUser);
+            let lin = await bepaid.generateLink(user, pack, discount);
             console.log(lin);
             let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
             return link;
