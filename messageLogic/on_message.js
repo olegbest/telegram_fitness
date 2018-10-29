@@ -9,6 +9,8 @@ module.exports = {
             user = await databaseUtil.createUser(msg.from, msg)
         }
 
+        await methods.updateStageStates(user);
+
         if (msg.contact) {
             let cont = msg.contact;
             if (cont.phone_number) {

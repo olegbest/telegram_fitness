@@ -1,5 +1,6 @@
 {
   "state0": {
+    "id": 0,
     "textArray": [
       {
         "type": "button",
@@ -19,6 +20,7 @@
   },
   "list": {
     "inline_query": true,
+    "id": 1,
     "textArray": [
       {
         "id": 0,
@@ -568,6 +570,7 @@
     ]
   },
   "buy": {
+    "id": 2,
     "textArray": [
       {
         "type": "button",
@@ -586,6 +589,7 @@
     ]
   },
   "buy-promo": {
+    "id": 3,
     "textArray": [
       {
         "type": "button",
@@ -604,6 +608,7 @@
     ]
   },
   "country-live": {
+    "id": 4,
     "textArray": [
       {
         "type": "button",
@@ -633,6 +638,7 @@
     "textArray": []
   },
   "buy-promo-success": {
+    "id": 5,
     "textArray": [
       {
         "type": "text",
@@ -641,6 +647,7 @@
     ]
   },
   "buy-promo-failed": {
+    "id": 6,
     "textArray": [
       {
         "type": "button",
@@ -659,6 +666,7 @@
     ]
   },
   "success-pay": {
+    "id": 7,
     "textArray": [
       {
         "type": "text",
@@ -673,6 +681,7 @@
     ]
   },
   "failed-pay": {
+    "id": 8,
     "textArray": [
       {
         "type": "text",
@@ -687,6 +696,7 @@
     ]
   },
   "name-profile": {
+    "id": 9,
     "textArray": [
       {
         "type": "text",
@@ -697,6 +707,7 @@
     "nextState": "gender-profile"
   },
   "gender-profile": {
+    "id": 10,
     "textArray": [
       {
         "type": "button",

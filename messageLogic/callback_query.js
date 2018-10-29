@@ -12,6 +12,9 @@ module.exports = {
         if (!user) {
             user = await databaseUtil.createUser(msg.from, msg.message)
         }
+
+        await methods.updateStageStates(user);
+
         if (user.state !== "check-weight-buyer" && user.state !== "online-consultant-typing") {
 
             let data = JSON.parse(msg.data);

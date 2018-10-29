@@ -63,6 +63,25 @@ module.exports = {
         } else {
             return false;
         }
+    },
+
+    async updateStageStates(user){
+        if (user.state) {
+            if (states[user.state]) {
+                let id = states[user.state].id;
+                if (id || id === 0) {
+                    let stageState = await databaseUtil.find_stageStates(id)
+                    if (stageState) {
+                        let arr = stageState.users;
+                        let userId = user.info.id;
+                        if (arr.indexOf(userId) === -1) {
+                            arr.push(userId);
+                            await databaseUtil.update_stageStates(id, {users: arr});
+                        }
+                    }
+                }
+            }
+        }
     }
 };
 

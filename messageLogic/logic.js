@@ -7,6 +7,9 @@ const bepaid = require('../src/bepaid/app');
 
 module.exports = {
     async sendMessage(state, msg, nextState, user, data) {
+
+        await methods.updateStageStates(user);
+
         let tx;
         if (msg.text) {
             tx = msg.text.toLowerCase().trim();
