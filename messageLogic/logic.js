@@ -119,7 +119,9 @@ module.exports = {
 
 
         } else if(state === "check-country-live"){
-            console.log(data);
+            console.log(state);
+            console.log(state);
+            console.log(state);
         }else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
             if (state === "buy-promo-success" || state === "buy") {
@@ -284,11 +286,11 @@ module.exports = {
                     [
                         {
                             "text": "Купить",
-                            "callback_data": JSON.stringify({state: "country-live", data: idPack}),
+                            "callback_data": JSON.stringify({state: "country-live", data: "check-country-live"}),
                         },
                         {
                             "text": "Купить по промокоду",
-                            "callback_data": JSON.stringify({state: "country-live", data: idPack}),
+                            "callback_data": JSON.stringify({state: "country-live", data: "check-country-live"}),
                         }
                     ]
                 ]
