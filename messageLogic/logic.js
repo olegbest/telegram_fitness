@@ -8,7 +8,7 @@ const bepaid = require('../src/bepaid/app');
 module.exports = {
     async sendMessage(state, msg, nextState, user, data) {
 
-        await methods.updateStageStates(user);
+        await methods.updateStageStates(user, state);
 
         let tx;
         if (msg.text) {

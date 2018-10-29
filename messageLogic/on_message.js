@@ -9,7 +9,7 @@ module.exports = {
             user = await databaseUtil.createUser(msg.from, msg)
         }
 
-        await methods.updateStageStates(user);
+        await methods.updateStageStates(user, user.state);
 
         if (msg.contact) {
             let cont = msg.contact;

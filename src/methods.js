@@ -65,12 +65,11 @@ module.exports = {
         }
     },
 
-    async updateStageStates(user){
-        console.log(user)
+    async updateStageStates(user, state){
         if (user.state) {
-            console.log(user.state)
-            if (states[user.state]) {
-                let id = states[user.state].id;
+            console.log(state)
+            if (states[state]) {
+                let id = states[state].id;
                 console.log(id)
                 if (id || id === 0) {
                     let stageState = await databaseUtil.find_stageStates(id)

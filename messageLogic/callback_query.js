@@ -13,7 +13,7 @@ module.exports = {
             user = await databaseUtil.createUser(msg.from, msg.message)
         }
 
-        await methods.updateStageStates(user);
+        await methods.updateStageStates(user, user.state);
 
         if (user.state !== "check-weight-buyer" && user.state !== "online-consultant-typing") {
 
