@@ -596,6 +596,24 @@
           [
             {
               "text": "Назад",
+              "callback_data": "{\"state\": \"country-live\", \"data\": 1}"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "country-live": {
+    "textArray": [
+      {
+        "type": "button",
+        "value": "Введите свой промокод ниже",
+        "buttonType": "keyboard",
+        "time": 300,
+        "buttons": [
+          [
+            {
+              "text": "Назад",
               "callback_data": "{\"state\": \"goPack\", \"data\": 1}"
             }
           ]
