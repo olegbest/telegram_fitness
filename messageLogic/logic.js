@@ -118,15 +118,14 @@ module.exports = {
             await this.sendMessage("waitPack", msg, "check-wait-pack", user, {})
 
 
-        } else if (states[state] && state !== "typing") {
+        } else if(state === "check-country-live"){
+            console.log(data);
+        }else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
             if (state === "buy-promo-success" || state === "buy") {
-                await this.sendMessage("country-live", msg, "check-country-live", user, data);
-                return;
-            } else if (state === "check-country-live") {
                 user = await databaseUtil.findUser(user.info.id);
                 if (user.purchasedCourses.length === 0 || data.course) {
-                    let el = states["buy"].textArray[0];
+                    let el = states[state].textArray[0];
                     let pack = states["list"].textArray[user.selectPack];
                     let discount = 0;
                     if (data.discount) {
@@ -285,11 +284,11 @@ module.exports = {
                     [
                         {
                             "text": "Купить",
-                            "callback_data": JSON.stringify({state: "buy", data: idPack}),
+                            "callback_data": JSON.stringify({state: "country-live", data: idPack}),
                         },
                         {
                             "text": "Купить по промокоду",
-                            "callback_data": JSON.stringify({state: "buy-promo", data: idPack}),
+                            "callback_data": JSON.stringify({state: "country-live", data: idPack}),
                         }
                     ]
                 ]
@@ -376,6 +375,8 @@ module.exports = {
         }
     }
 }
+
+
 
 
 function wait(ms) {
