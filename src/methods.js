@@ -72,7 +72,8 @@ module.exports = {
                 let id = states[state].id;
                 console.log(id)
                 if (id || id === 0) {
-                    let stageState = await databaseUtil.find_stageStates(id)
+                    let stageState = await databaseUtil.find_stageStates(id);
+                    console.log(stageState);
                     if (stageState) {
                         let arr = stageState.users;
                         let userId = user.info.id;
