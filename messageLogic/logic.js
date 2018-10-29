@@ -121,8 +121,10 @@ module.exports = {
         } else if (states[state] && state !== "typing") {
             await databaseUtil.saveUserData(user.info.id, {state: "typing"});
             if (state === "buy-promo-success" || state === "buy") {
-                await this.sendMessage("country-live", msg, "typing", user, data);
+                await this.sendMessage("country-live", msg, "check-country-live", user, data);
                 return;
+            }
+            if (state === "check-country-live") {
                 user = await databaseUtil.findUser(user.info.id);
                 if (user.purchasedCourses.length === 0 || data.course) {
                     let el = states[state].textArray[0];
@@ -375,8 +377,6 @@ module.exports = {
         }
     }
 }
-
-
 
 
 function wait(ms) {
