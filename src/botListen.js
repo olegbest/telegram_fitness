@@ -18,6 +18,9 @@ bot.on('callback_query', async (msg) => {
 
 bot.on("inline_query", async (query) => {
 
+    let user = await databaseUtil.findUser(query.from.id);
+    await methods.updateStageStates(user, "list");
+
     let list = states['list'].textArray;
     let arr = [];
     for (let i = 0; i < list.length; i++) {
