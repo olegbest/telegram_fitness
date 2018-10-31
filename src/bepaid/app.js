@@ -36,9 +36,9 @@ module.exports = {
             let dataString = {
                 "checkout": {
                     "version": 2.1,
-                    "test": false,
+                    "test": true,
                     "transaction_type": "payment",
-                    "attempts": 3,
+                    "attempts": 1,
                     "settings": {
                         "success_url": "https://ufsi24.com",
                         "decline_url": "https://ufsi24.com",
