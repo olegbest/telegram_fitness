@@ -35,7 +35,7 @@ module.exports = {
             let dataString = {
                 "checkout": {
                     "version": 2.1,
-                    "test": true,
+                    "test": false,
                     "transaction_type": "payment",
                     "attempts": 1,
                     "settings": {
