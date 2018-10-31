@@ -21,20 +21,17 @@ module.exports = {
 
             let price = pack.price;
 
-            if(user.country === "беларусь"){
+            if (user.country === "беларусь") {
                 country = "BYN";
                 price = ((+currency.USD_in + (+currency.USD_out)) / 2) * price;
-            } else if (user.country === "россия"){
+            } else if (user.country === "россия") {
                 country = "RUB";
                 price = +currency.USD_RUB_in * price;
             } else {
                 country = "USD"
             }
-
             price = Math.floor(price * 100);
             price = Math.floor((price * (100 - discount)) / 100);
-            console.log("Цена "+price);
-            console.log("Скидка "+ discount);
             let dataString = {
                 "checkout": {
                     "version": 2.1,
@@ -90,7 +87,14 @@ async function getCurrency() {
         request(options, (error, response, body) => {
 
             try {
-                resolve(JSON.parse(body)[0]);
+                let data = JSON.parse(body);
+                let i = 0;
+                let res = data[i];
+                while (+res.USD_in <= 0){
+                    i++;
+                    res = data[i];
+                }
+                resolve(res);
             } catch (e) {
                 console.log(e)
             }
