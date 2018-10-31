@@ -32,7 +32,8 @@ module.exports = {
 
             price = Math.floor(price * 100);
             price = Math.floor((price * (100 - discount)) / 100);
-            console.log(price);
+            console.log("Цена "+price);
+            console.log("Скидка "+ discount);
             let dataString = {
                 "checkout": {
                     "version": 2.1,
