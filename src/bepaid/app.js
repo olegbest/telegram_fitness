@@ -14,6 +14,8 @@ module.exports = {
 
     async generateLink(user, pack, discount) {
         return await new Promise(async (resolve) => {
+            console.log("pack----");
+            console.log(pack);
             let idUser = user.info.id;
             let currency = await getCurrency();
             let country;

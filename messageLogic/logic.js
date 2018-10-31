@@ -367,8 +367,6 @@ module.exports = {
         }
     },
     async generateLink(price, idUser, pack, discount) {
-        console.log("pack----");
-        console.log(pack);
         if (discount >= 100) {
             let user = await databaseUtil.findUser(+idUser);
             let msg = {};
