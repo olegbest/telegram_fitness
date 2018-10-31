@@ -84,7 +84,7 @@ module.exports = {
 async function getCurrency() {
     return await new Promise(resolve => {
         let options = {
-            url: "https://belarusbank.by/api/kursExchange",
+            url: "https://belarusbank.by/api/kursExchange?city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA",
             method: 'GET'
         };
         request(options, (error, response, body) => {
