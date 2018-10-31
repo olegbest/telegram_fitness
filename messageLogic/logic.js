@@ -256,7 +256,7 @@ module.exports = {
             let p = pack.description.li;
             let info = "";
             info += "<b>" + pack.name + "</b>\n";
-            info += "<a href=\"https://ufsi24.com/assets/telegram_photo/" + pack.image + "\">&#8204;</a>" + "\n";
+            info += "<a href=\"http://ufsi24.com/assets/telegram_photo/" + pack.image + "\">&#8204;</a>" + "\n";
             for (let i = 0; i < p.length; i++) {
                 info += p[i] + "\n";
             }
