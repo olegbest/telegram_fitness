@@ -138,6 +138,8 @@ module.exports = {
                     if (data.discount) {
                         discount = data.discount;
                     }
+                    console.log("pack----");
+                    console.log(pack);
                     let text = el.value + "\n" + await this.generateLink(150, user.info.id, pack, discount);
 
                     await messageUtils.sendButton(bot, msg.chat.id, text, {
