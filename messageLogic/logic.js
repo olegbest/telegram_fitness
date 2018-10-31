@@ -366,7 +366,7 @@ module.exports = {
         let user = await databaseUtil.findUser(+idUser);
         let discount = 0;
         if (user.discount) {
-            discount = data.discount;
+            discount = user.discount;
         }
         await databaseUtil.saveUserData(+idUser, {discount: 0})
         if (discount >= 100) {
