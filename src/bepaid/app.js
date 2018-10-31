@@ -24,7 +24,7 @@ module.exports = {
                 country = "BYN";
                 price = ((+currency.USD_in + (+currency.USD_out)) / 2) * price;
             } else if (user.country === "россия"){
-                country = "RUB"
+                country = "RUB";
                 price = +currency.USD_RUB_in * price;
             } else {
                 country = "USD"
@@ -32,6 +32,7 @@ module.exports = {
 
             price = Math.floor(price * 100);
             price = Math.floor((price * (100 - discount)) / 100);
+            console.log(price);
             let dataString = {
                 "checkout": {
                     "version": 2.1,
