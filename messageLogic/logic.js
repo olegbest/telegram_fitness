@@ -294,7 +294,13 @@ module.exports = {
                             "callback_data": JSON.stringify({state: "country-live", data: "check-country-live-pr"}),
                         }
                     ]
-                ]
+                ];
+                if (user.isBuy) {
+                    keyboard.push([{
+                        "text": "Онлайн-консультация",
+                        "callback_data": "{\"state\": \"online-consultant\", \"data\": \"hz\"}"
+                    },])
+                }
             }
 
             if (!data.editMessage) {
