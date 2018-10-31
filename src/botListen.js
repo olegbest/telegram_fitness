@@ -29,8 +29,8 @@ bot.on("inline_query", async (query) => {
             "type": "article",
             "title": list[i].name,
             "description": list[i].description.title,
-            "photo_url": "http://www.ufsi24.com/assets/telegram_photo/" + list[i].image,
-            "thumb_url": "http://www.ufsi24.com/assets/telegram_photo/" + list[i].image,
+            "photo_url": "http://ufsi24.com/assets/telegram_photo/" + list[i].image,
+            "thumb_url": "http://ufsi24.com/assets/telegram_photo/" + list[i].image,
             "input_message_content": {
                 "parse_mode": "HTML",
                 "message_text": "Хочу \n" + list[i].name + "\n <a href=\"https://trello-attachments.s3.amazonaws.com/" + i + "\">&#8204;</a>"
