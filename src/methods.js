@@ -8,6 +8,9 @@ module.exports = {
         let folder = states["list"].textArray[pack].description.folder;
         let dir = `${__dirname}/../${folder}/${user.weight}/`;
         let item = await fs.readdirSync(dir);
+        console.log(item);
+        item = await fs.readdirSync(dir);
+        console.log(item);
         if (item) {
             for (let i = 0; i < item.length; i++) {
                 let doc = dir + item[i];

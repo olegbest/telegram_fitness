@@ -134,11 +134,7 @@ module.exports = {
                 if (user.purchasedCourses.length === 0 || data.course) {
                     let el = states[state].textArray[0];
                     let pack = states["list"].textArray[user.selectPack];
-                    let discount = 0;
-                    if (data.discount) {
-                        discount = data.discount;
-                    }
-                    let text = el.value + "\n" + await this.generateLink(150, user.info.id, pack, discount);
+                    let text = el.value + "\n" + await this.generateLink(150, user.info.id, pack);
 
                     await messageUtils.sendButton(bot, msg.chat.id, text, {
                         "reply_markup": {
@@ -366,16 +362,20 @@ module.exports = {
 
         }
     },
-    async generateLink(price, idUser, pack, discount) {
+    async generateLink(price, idUser, pack) {
+        let user = await databaseUtil.findUser(+idUser);
+        let discount = 0;
+        if (user.discount) {
+            discount = data.discount;
+        }
+        await databaseUtil.saveUserData(+idUser, {discount: 0})
         if (discount >= 100) {
-            let user = await databaseUtil.findUser(+idUser);
             let msg = {};
             msg.chat = {};
             msg.chat.id = user.chat_id;
             this.successBuy(msg, user, "success", "");
             return "";
         } else {
-            let user = await databaseUtil.findUser(+idUser);
             let lin = await bepaid.generateLink(user, pack, discount);
             console.log(lin);
             let link = lin.checkout.redirect_url || "https://www.ufsi24.com/"
