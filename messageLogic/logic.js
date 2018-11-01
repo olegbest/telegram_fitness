@@ -115,13 +115,14 @@ module.exports = {
             let dateNow = new Date();
             if (user.activePack === "15" || user.activePack === "16") {
                 await this.sendMessage("individual-pack", msg, "check-wait-pack", user, {});
-            } else if (purC[indexPack]["now-week"] === 0 || dateNow > dateLast) {
-                await this.sendMessage("sendingFiles", msg, "typing", user, data, {});
-                await methods.sendActivePack(user.activePack, user, msg);
+            } else {
+                if (purC[indexPack]["now-week"] === 0 || dateNow > dateLast) {
+                    await this.sendMessage("sendingFiles", msg, "typing", user, data, {});
+                    await methods.sendActivePack(user.activePack, user, msg);
+                }
+                await methods.changeSendNextDate(user);
+                await this.sendMessage("waitPack", msg, "check-wait-pack", user, {})
             }
-            await methods.changeSendNextDate(user);
-            await this.sendMessage("waitPack", msg, "check-wait-pack", user, {})
-
 
         } else if (state === "check-country-live") {
             await databaseUtil.saveUserData(user.info.id, {country: tx});
