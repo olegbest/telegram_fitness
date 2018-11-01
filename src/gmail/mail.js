@@ -22,7 +22,7 @@ function sendMail(firstName, email, files) {
     })
 
     let mail = {
-        from: "Hear Hero Service",
+        from: "UFSi Fitness",
         to: email,
         subject: "Курсы",
         html: "<h4>Здравствуйте " + firstName + "</h4>" +
