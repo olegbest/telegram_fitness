@@ -113,7 +113,9 @@ module.exports = {
             let dateLast = new Date(purC[indexPack].lastSendDate);
             dateLast.setHours(dateLast.getHours() + (24 * 6));
             let dateNow = new Date();
-            if (purC[indexPack]["now-week"] === 0 || dateNow > dateLast) {
+            if (user.activePack === "15" || user.activePack === "15") {
+                await this.sendMessage("individual-pack", msg, "check-wait-pack", user, {});
+            } else if (purC[indexPack]["now-week"] === 0 || dateNow > dateLast) {
                 await this.sendMessage("sendingFiles", msg, "typing", user, data, {});
                 await methods.sendActivePack(user.activePack, user, msg);
             }

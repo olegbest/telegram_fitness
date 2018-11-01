@@ -993,6 +993,29 @@
     ],
     "nextState": "check-wait-pack"
   },
+  "individual-pack": {
+    "textArray": [
+      {
+        "type": "button",
+        "value": "Вы купили персональный пакет. Нажмите кнопку \"Онлайн-консультация\". И напишите, что вы купили индивидуальный пакет и с вами свяжется ваш тренер.",
+        "time": 500,
+        "buttonType": "inline",
+        "buttons": [
+          [
+            {
+              "text": "Онлайн-консультация",
+              "callback_data": "{\"state\": \"online-consultant\", \"data\": \"hz\"}"
+            },
+            {
+              "text": "Список курсов",
+              "switch_inline_query_current_chat": ""
+            }
+          ]
+        ]
+      }
+    ],
+    "nextState": "check-wait-pack"
+  },
   "interrupt-pack": {
     "textArray": [
       {
