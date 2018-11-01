@@ -12,25 +12,33 @@ let smtpTransport = mailer.createTransport({
 function sendMail(firstName, email, files) {
 
     console.log(files);
+    let attach = [];
 
-    // let mail = {
-    //     from: "Hear Hero Service",
-    //     to: email,
-    //     subject: "Курсы",
-    //     html: "<h4>Здравствуйте " + firstName + "</h4>" +
-    //         "<p>Ваш курс. Прикреплен к этому сообщению</p>",
-    //     attachments: files
-    // };
-    // smtpTransport.sendMail(mail, function (error, response) {
-    //     if (error) {
-    //         console.log(error);
-    //     } else {
-    //         console.log("Message sent: " + response.message);
-    //     }
-    //
-    //     smtpTransport.close();
-    //
-    // });
+    files.forEach((el,i) => {
+        attach.push({
+            filename: `file-${i}`,
+            path: el
+        })
+    })
+
+    let mail = {
+        from: "Hear Hero Service",
+        to: email,
+        subject: "Курсы",
+        html: "<h4>Здравствуйте " + firstName + "</h4>" +
+            "<p>Ваш курс. Прикреплен к этому сообщению</p>",
+        attachments: attach
+    };
+    smtpTransport.sendMail(mail, function (error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Message sent: " + response.message);
+        }
+
+        smtpTransport.close();
+
+    });
 
 }
 
