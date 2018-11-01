@@ -3,3 +3,4 @@ node_modules
 src/bot.js
 src/bepaid/config.json
 lib/config.json
+src/gmail/config.json

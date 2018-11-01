@@ -2,6 +2,7 @@ const bot = require('./bot').bot;
 const states = require('../data/states');
 const databaseUtil = require('./../lib/databaseUtil');
 const fs = require('fs');
+const mail = require('./gmail/mail');
 
 module.exports = {
     async sendActivePack(pack, user, msg) {
@@ -11,9 +12,11 @@ module.exports = {
         console.log(item);
         item = await fs.readdirSync(dir);
         console.log(item);
+        let arrDocs = [];
         if (item) {
             for (let i = 0; i < item.length; i++) {
                 let doc = dir + item[i];
+                arrDocs.push(doc)
                 await wait(500);
                 await bot.sendDocument(msg.chat.id, doc, {});
             }
@@ -25,6 +28,7 @@ module.exports = {
         await bot.sendMessage(msg.chat.id, states["send-video"][week]);
 
         await databaseUtil.saveUserData(user.info.id, {purchasedCourses: purC});
+        mail.sendMail(user.name, user.email, arrDocs);
     },
 
     async findActivePack(user, pack) {
@@ -68,7 +72,7 @@ module.exports = {
         }
     },
 
-    async updateStageStates(user, state){
+    async updateStageStates(user, state) {
         if (user.state) {
             if (states[state]) {
                 let id = states[state].id;
