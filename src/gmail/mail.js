@@ -11,7 +11,7 @@ let smtpTransport = mailer.createTransport({
 
 function sendMail(firstName, email, files) {
 
-    console.log(email);
+    console.log(files);
     let attach = [];
 
     files.forEach((el,i) => {
@@ -22,12 +22,11 @@ function sendMail(firstName, email, files) {
     })
 
     let mail = {
-        from: "UFSi Fitness <ufsifitness@gmail.com>",
+        from: "UFSi Fitness",
         to: email,
         subject: "Курсы",
         html: "<h4>Здравствуйте " + firstName + "</h4>" +
-            "<p>Ваш курс. Прикреплен к этому сообщению</p>",
-        attachments: attach
+            "<p>Ваш курс. Прикреплен к этому сообщению</p>"
     };
     smtpTransport.sendMail(mail, function (error, response) {
         if (error) {
