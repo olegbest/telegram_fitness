@@ -26,7 +26,8 @@ function sendMail(firstName, email, files) {
         to: email,
         subject: "Курсы",
         html: "<h4>Здравствуйте " + firstName + "</h4>" +
-            "<p>Ваш курс. Прикреплен к этому сообщению</p>"
+            "<p>Ваш курс. Прикреплен к этому сообщению</p>",
+        attachments: attach
     };
     smtpTransport.sendMail(mail, function (error, response) {
         if (error) {
