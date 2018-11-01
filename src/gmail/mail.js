@@ -16,7 +16,7 @@ function sendMail(firstName, email, files) {
 
     files.forEach((el,i) => {
         attach.push({
-            filename: `file-${i}`,
+            filename: `file-${i+1}.docx`,
             path: el
         })
     })
