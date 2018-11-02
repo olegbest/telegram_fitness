@@ -3,7 +3,7 @@ const port = process.env.PORT || 8081;
 const app = express();
 const logic = require('./../../messageLogic/logic');
 const databaseUtil = require('./../../lib/databaseUtil')
-
+const routes = require('./../posts/post');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser());
@@ -29,6 +29,12 @@ app.post('/bepaid', async function (req, res) {
     }
 
 });
+
+
+let Routes = new routes(app);
+
+Routes.setup();
+
 
 app.listen(port);
 console.log("success port " + port)
