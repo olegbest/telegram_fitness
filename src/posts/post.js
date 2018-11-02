@@ -5,7 +5,7 @@ class Routes {
 
     setup() {
         this.app.post('/blinger-messages', async function (req, res) {
-            console.log("Работает")
+            console.log(req.body);
         })
     }
 }
