@@ -1,5 +1,5 @@
 const messageUtils = require('./../../lib/messageUtils');
-const bot = require('./../bot');
+const bot = require('./../bot').bot;
 
 class Routes {
     constructor(app) {
